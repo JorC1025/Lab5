@@ -11,8 +11,8 @@
 
 #include <avr/io.h>
 
-void pwm1_init(void);
-void pwm1_set_pulse(uint16_t pulse_us);
+void pwm0_init();
+void pwm0_set_pulse(uint16_t pulse_us);
 
 
 

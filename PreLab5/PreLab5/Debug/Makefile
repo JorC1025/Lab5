@@ -33,13 +33,17 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
+../LEDPOT \
+../PWM1 \
 ../PWM0
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../LEDPOT/LEDPOT.c \
 ../main.c \
-../PWM0/PWM0.c
+../PWM0/PWM0.c \
+../PWM1/PWM1.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,20 +53,28 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+LEDPOT/LEDPOT.o \
 main.o \
-PWM0/PWM0.o
+PWM0/PWM0.o \
+PWM1/PWM1.o
 
 OBJS_AS_ARGS +=  \
+LEDPOT/LEDPOT.o \
 main.o \
-PWM0/PWM0.o
+PWM0/PWM0.o \
+PWM1/PWM1.o
 
 C_DEPS +=  \
+LEDPOT/LEDPOT.d \
 main.d \
-PWM0/PWM0.d
+PWM0/PWM0.d \
+PWM1/PWM1.d
 
 C_DEPS_AS_ARGS +=  \
+LEDPOT/LEDPOT.d \
 main.d \
-PWM0/PWM0.d
+PWM0/PWM0.d \
+PWM1/PWM1.d
 
 OUTPUT_FILE_PATH +=PreLab5.elf
 
@@ -78,6 +90,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+LEDPOT/LEDPOT.o: ../LEDPOT/LEDPOT.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 ./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
@@ -86,6 +105,13 @@ LINKER_SCRIPT_DEP+=
 	
 
 PWM0/PWM0.o: ../PWM0/PWM0.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+PWM1/PWM1.o: ../PWM1/PWM1.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
